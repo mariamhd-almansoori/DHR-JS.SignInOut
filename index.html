@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <title>نظام الحضور والانصراف للبرامج التأهيلية</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #56a3e2;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #98cffa;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+	<div class="logo">
+            <img src="https://previews.dropbox.com/p/thumb/ACQ6w5Ypo9a_PAGW6siossD_lSkUpN1DIdEJXlgio4Xjnc3Ii_T4zGZK7ntvTGFm0g8FDNRa2dOBLKGsdvwUIae8EOfDr6p8rkgElYUBh2qKUOZcvSn0P0Z6sVX0mh7f-Th62vFEdBgwHwu5Qm6dG170f8JkfJsj1Dx9Vl2Ag93z5kYlcSsuJu4dzpCUfoMJgL2jnxAUw8mU4lzrqdRsURw-JS-asDzD6Dkdx-jPCPqlihtQOSacxi5bzkVOQzrKxw3-NRMWoJ88MdnIjSsnOPfi6Fu5wRy4XfJKhnMsccbw0R9GeQ2YZS4o4-diuvEiY4-YgcGKDpRwutxew1mf8HZbGcr8bCcDtB3z0iO5koIQpvG3AUAdZ2suvNRJdxbIHIM/p.png" alt="شعار الموارد البشرية">
+        	</div>
+        <h1>نظام الحضور والانصراف للبرامج التأهيلية</h1>
+        <div id="selection">
+            <button onclick="showForm('attendance')">تسجيل الحضور</button>
+            <button onclick="showForm('departure')">تسجيل الانصراف</button>
+        </div>
+        
+        <form id="attendanceForm" class="hidden">
+            <h2>تسجيل الحضور</h2>
+            <label for="studentName">اسم الباحث عن عمل</label>
+            <input type="text" id="studentName" name="studentName" required>
+
+            <label for="phoneNumber">رقم الهاتف</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="9715[0-9]{8}" required         
+                placeholder="9715XXXXXXXX">
+
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="qualification">المؤهل العلمي</label>
+            <select id="qualification" name="qualification" onchange="showPrograms(this.value)" required>
+                <option value="">اختر المؤهل العلمي</option>
+                <option value="less_than_high_school">اقل من الشهادة الثانوية</option>
+                <option value="high_school">الشهادة الثانوية</option>
+                <option value="certificate_of_completion">شهادة الإنجاز</option>
+                <option value="diploma">الدبلوم</option>
+                <option value="bachelor">البكالوريوس</option>
+                <option value="master">الماجستير</option>
+            </select>
+
+            <div id="programs" class="hidden">
+                <label for="program">البرنامج</label>
+                <select id="program" name="program" required></select>
+            </div>
+
+            <button type="button" onclick="submitForm('attendance')">تسجيل الحضور</button>
+        </form>
+
+        <form id="departureForm" class="hidden">
+            <h2>تسجيل الانصراف</h2>
+            <label for="studentNameDep">اسم الباحث عن عمل</label>
+            <input type="text" id="studentNameDep" name="studentName" required>
+
+            <label for="phoneNumberDep">رقم الهاتف</label>
+            <input type="tel" id="phoneNumberDep" name="phoneNumber" pattern="9715[0-9]{8}" required placeholder="9715XXXXXXXX">
+
+            <label for="emailDep">البريد الإلكتروني</label>
+            <input type="email" id="emailDep" name="email" required>
+
+            <button type="button" onclick="submitForm('departure')">تسجيل الانصراف</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
